@@ -1,0 +1,230 @@
+.devices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.device {
+    width: 220px;
+    margin: 0px 10px;
+    text-align: center;
+}
+
+.device .image {
+    height: 275px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.device .details .starting-at {
+    text-align: right;
+    font-family: 'Stag-Sans-Book';
+    font-size: 11px;
+    color: #7d7d7d;
+    display: inline-block;
+}
+
+.device .details .pricing {
+    display: inline-block;
+    font-family: 'Stag-Sans-Light', Helvetica, sans-serif;
+    font-size: 34px;
+    color: #0065a4;
+}
+
+.device .details .pricing .price-ss {
+    display: inline;
+    line-height: 1.6em !important;
+    vertical-align: text-top !important;
+    font-size: 50% !important;
+}
+
+.device .details .pricing .duration {
+    display: inline-block;
+    font-family: 'Stag-Sans-Book';
+    font-size: 15px;
+}
+
+.device .details .name {
+    font-family: 'Stag-Sans-Medium', Helvetica, sans-serif;
+    color: #252525;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+.device .details .cta  {
+    display: inline-block;
+    position: relative;
+    padding: 5px 30px;
+    color: #fff;
+    font-family: "Stag-Sans-Book";
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 10px;
+    text-decoration: none !important;
+    text-align: center;
+    background: #c22532;
+    background: -moz-linear-gradient(top, #c22532 0%, #ee3040 100%);
+    background: -webkit-linear-gradient(top, #c22532 0%, #ee3040 100%);
+    background: linear-gradient(to bottom, #c22532 0%, #ee3040 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c22532', endColorstr='#ee3040',GradientType=0 );
+    transition: all 300ms;
+}
+.device .details .cta:hover {
+    color: #fff !important;
+    cursor: pointer;
+}
+.device .details .cta:hover:after {
+    color: #fff !important;
+    opacity: 1;
+}
+
+.device .details .cta:after {
+    content: 'Add to Cart';
+    display: inline-block;
+    padding: 5px 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-decoration: none !important;
+    background: #1a87c6;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #1a87c6 0%, #0069ac 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1a87c6 0%, #0069ac 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1a87c6 0%, #0069ac 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a87c6', endColorstr='#0069ac',GradientType=0 );
+    /* IE6-9 */
+    opacity: 0;
+    transition: all 300ms;
+}
+
+.device .image .qv-icon {
+    display:none;
+}
+
+.device .image:hover .qv-icon {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display:inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #0065a4;
+    border-radius: 30px;
+    color: #FFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.device .image:hover .qv-icon:hover {
+    display:inline-block;
+    background-color: #ee3040;
+}
+
+.device .image:hover .qv-icon span{
+    font-family: "Stag-Book";
+    font-size: 14px;
+    position: relative;
+    top: 13px;
+}
+
+/* */
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Carousel */
+
+@font-face {
+    font-family: 'modal-carousel-icons';
+    src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.carousel {
+    background-color: blue;
+    padding: 50px;
+    position: relative;
+    width: 380px;
+    height: 400px;
+}
+
+.carousel-nav {
+    position: absolute;
+    height: 33px;
+    width: 24px;
+    z-index:1900;
+    top: 45%;
+    line-height: 35px;
+    font-family: 'modal-carousel-icons';
+    font-size: 50px;
+    color: #000;
+    display: block;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.carousel-nav:hover {
+    opacity:1.0;
+}
+
+.carousel-nav.left{
+    left: -30px;
+}
+
+.carousel-nav.left:before{
+    content: '\e901';
+}
+
+.carousel-nav.right{
+    right: -30px;
+}
+
+.carousel-nav.right:before{
+    content: '\e902';
+}
+
+.wrapper {
+    width: 380px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mask {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    left: 0px;
+    transition: all 0.5s ease;
+}
+
+.slide {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    height: 400px;
+    float:left;
+}
+
+.slide img{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}

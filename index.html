@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FQ540 CMS Tryout</title>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		<script src="jquery.fq540cms.js"></script>
+	</head>
+	<body>
+		<div class="devices"></div>
+		<script>
+			$(function() {
+				$( ".devices").fq540cms({
+					// devices - Array | productID
+					devices: ["prod6070142", "prod5120142", "prod5530141"]
+				});
+			});
+		</script>
+	</body>
+</html>
