@@ -38,6 +38,7 @@ Options (and defaults):
 > **Format:**
 
 > // OptionName - Type | Options/Summary
+>
 >    OptionName: DefaultValue
 ```
 defaults = {
