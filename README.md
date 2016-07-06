@@ -35,6 +35,10 @@ $(function() {
 ```
 Options (and defaults):
 -------------
+> **Format:**
+
+> // OptionName - Type | Options/Summary
+>    OptionName: DefaultValue
 ```
 defaults = {
 	// devices - Array | productID
