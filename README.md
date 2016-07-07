@@ -1,5 +1,6 @@
 **$.fq540cms.js** | a jQuery Plugin
 ===================
+CDN URL: https://uscc-data.fq540.com/fq540cms/jquery.fq540cms.js
 
 This plugin was designed to consolidate existing implementations of the FQ540/USCC bridge into a single, manageable plugin.
 
@@ -14,7 +15,6 @@ All dependencies are located on **uscc.dev.fq540.com**:
 ```
 /var/www/data/html/fq540cms/
 ```
-https://uscc-data.fq540.com/fq540cms/jquery.fq540cms.js
 
 ![uscc-jquery-cms-explainer.png](https://bitbucket.org/repo/kaMadA/images/1496828297-uscc-jquery-cms-explainer.png)
 
