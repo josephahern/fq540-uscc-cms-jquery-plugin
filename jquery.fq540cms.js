@@ -205,41 +205,97 @@
 				});
 			},
 			addToCart: function() {
+				
+				var installmentAmount;
+					
+				//Determine if there are installment amounts (financing only)
+				switch(this.settings.skuType) {
+					case "financing20":
+						installmentAmount = 20;
+						break;
+					case "financing24":
+						installmentAmount = 24;
+						break;
+					case "financing30":
+						installmentAmount = 30;
+						break;
+					default: 
+						var installmentAmount = "";
+				}
+				
+				console.log(installmentAmount);
+				
 				$(document.body).on("click", this.settings.addToCartClass, function(e){
 					e.preventDefault();
-
-					var sUrl = '/uscellular/ByPassLandingPageServlet?transactionType=' + transactionType
-						+ '&prodId=' + $(this).attr('data-prodid')
-						+ '&skuId=' + $(this).attr('data-skuid')
-						+ '&currency=' + 'dollars';
-
-					if(this.settings.skuType === 'financing20'){
-						sUrl += '&installments=' + '20';
-					} else if (this.settings.skuType === 'financing24') {
-						sUrl += '&installments=' + '24';
-					} else if (this.settings.skuType === 'financing30') {
-						sUrl += '&installments=' + '30';
-					}
-
-					console.log(sUrl);
-
-					usc.mod['my-account'].showPleaseWait();
-					$.ajax({
-						type: 'get',
-						url: sUrl,
-						dataType: 'json',
-						success: function(data){
-							if ($('#simplemodal-overlay').length > 0) {
-								usc.onModalClose = function() {
-									usc.mod['myaccount-cart'].handleGetGuidingModalSuccess(data);
-								};
-								$.modal.close();
-							}else {
-								usc.mod['myaccount-cart'].handleGetGuidingModalSuccess(data);
+					
+					var jsonObj = 
+					{
+						"activeLineNumber": $('#activeLineNumber').val(),
+						"response":"cartJSON",
+						"products":
+						[
+							{
+								"productType": "1",
+								"productId": $(this).attr('data-prodid'),
+								"skuId": $(this).attr('data-skuid'),
+								"installments": installmentAmount,
+								"quantity": "1",
+								"action":"1"
 							}
+						]
+					};
+					$('#cart-show-modal-form input#form-content').val(JSON.stringify(jsonObj));
+			
+					// if the zip code has already been set, submit the product to the cart, otherwise the zip code modal needs to be shown
+					if ($('#hasZipCode').val() == '1') {
+						$('#glb-cart-loading').show();
+						if ($('#simplemodal-overlay').length > 0) {
+							usc.onModalClose = function() {
+								// The order recap page should not re-show the guiding modal so handle that case seperately
+								if (pageName != 'orderRecap') {
+									fromViewCart = 0;
+									$.ajax({
+										type: 'post',
+										url: $('#cart-show-modal-form').attr('action'),
+										data: $('#cart-show-modal-form').serialize(),
+										dataType: 'json',
+										success: usc.mod['glb-cart'].handleGetGuidingModalSuccess,
+										error: usc.mod['glb-cart'].handleGetGuidingModalError
+									});
+								} else {
+									fromViewCart = 0;
+									$.ajax({
+										type: 'post',
+										url: $('#cart-show-modal-form').attr('action'),
+										data: $('#cart-show-modal-form').serialize(),
+										dataType: 'json',
+										success: usc.mod['glb-cart'].handleGetOrderRecapSuccess,
+										error: usc.mod['glb-cart'].handleGetOrderRecapError
+									});
+								}
+								usc.onModalClose = function() {
+									// Mike L. - 1/12/15 - GEN-109
+									oModalNotRefresh = true;
+									usc.handleModalClose();
+								};
+							};
+							$.modal.close();
+						} else {
+							fromViewCart = 0;
+							$.ajax({
+								type: 'post',
+								url: $('#cart-show-modal-form').attr('action'),
+								data: $('#cart-show-modal-form').serialize(),
+								dataType: 'json',
+								success: usc.mod['glb-cart'].handleGetGuidingModalSuccess,
+								error: usc.mod['glb-cart'].handleGetGuidingModalError
+							});
 						}
-					});
-
+					}
+					else {
+						pageName = 'ecomEnabled';
+						$('#modal-zipcode-content').modal($.extend(usc.mod.simplemodal.modalOptions));
+					}
 				});
 			}
 		});
