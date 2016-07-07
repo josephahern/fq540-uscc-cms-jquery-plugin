@@ -16,6 +16,8 @@ All dependencies are located on **uscc.dev.fq540.com**:
 ```
 https://uscc-data.fq540.com/fq540cms/jquery.fq540cms.js
 
+![uscc-jquery-cms-explainer.png](https://bitbucket.org/repo/kaMadA/images/1496828297-uscc-jquery-cms-explainer.png)
+
 How to use:
 -------------
 **$.fq540cms.js** is a simple instantiation designed to help accommodate even the most complex of pages.  
